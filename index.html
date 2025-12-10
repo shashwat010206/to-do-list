@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- =========================================================
+         TITLE AND META INFORMATION
+         This HTML file defines the structure of the To-Do List app.
+         It works together with style.css and script.js.
+         ========================================================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Advanced To-Do List Application</title>
+
+    <!-- =========================================================
+         LINKING EXTERNAL CSS FILE
+         ========================================================= -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- =========================================================
+         ADDITIONAL META / DESCRIPTION (FOR DOCUMENTATION)
+         These tags are not necessary for basic functioning but
+         demonstrate good practice in HTML documents.
+         ========================================================= -->
+    <meta name="description" content="A To-Do List application created using HTML, CSS, and JavaScript for academic assignment purposes.">
+    <meta name="author" content="Student Name">
+
+</head>
+<body>
+
+    <!-- =========================================================
+         MAIN PAGE WRAPPER
+         This container wraps the whole application content.
+         ========================================================= -->
+    <div class="page-wrapper">
+
+        <!-- =====================================================
+             HEADER SECTION
+             Contains application title and subtitle/description.
+             ===================================================== -->
+        <header class="app-header">
+            <h1 class="app-title">To-Do List Manager</h1>
+            <p class="app-subtitle">
+                A simple task management application built using
+                HTML, CSS and JavaScript.
+            </p>
+        </header>
+
+        <!-- =====================================================
+             MAIN CONTENT SECTION
+             This section contains the main functional features.
+             ===================================================== -->
+        <main class="app-main">
+
+            <!-- =================================================
+                 INPUT SECTION
+                 This part allows the user to add new tasks.
+                 ================================================= -->
+            <section class="input-section" aria-label="Add new task section">
+
+                <!-- Task text input -->
+                <div class="input-row">
+                    <label for="taskTitle" class="input-label">
+                        Task Title
+                    </label>
+                    <input
+                        type="text"
+                        id="taskTitle"
+                        class="text-input"
+                        placeholder="Enter task title">
+                </div>
+
+                <!-- Optional description -->
+                <div class="input-row">
+                    <label for="taskDescription" class="input-label">
+                        Task Description (optional)
+                    </label>
+                    <textarea
+                        id="taskDescription"
+                        class="text-area"
+                        placeholder="Enter task description">
+                    </textarea>
+                </div>
+
+                <!-- Priority selection -->
+                <div class="input-row">
+                    <label for="taskPriority" class="input-label">
+                        Priority
+                    </label>
+                    <select id="taskPriority" class="select-input">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+
+                <!-- Category selection -->
+                <div class="input-row">
+                    <label for="taskCategory" class="input-label">
+                        Category
+                    </label>
+                    <select id="taskCategory" class="select-input">
+                        <option value="general">General</option>
+                        <option value="study">Study</option>
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                    </select>
+                </div>
+
+                <!-- Due date -->
+                <div class="input-row">
+                    <label for="taskDueDate" class="input-label">
+                        Due Date
+                    </label>
+                    <input
+                        type="date"
+                        id="taskDueDate"
+                        class="date-input">
+                </div>
+
+                <!-- Buttons row -->
+                <div class="button-row">
+                    <button
+                        type="button"
+                        id="addTaskButton"
+                        class="primary-button">
+                        Add Task
+                    </button>
+
+                    <button
+                        type="button"
+                        id="clearInputsButton"
+                        class="secondary-button">
+                        Clear Inputs
+                    </button>
+                </div>
+
+            </section>
+
+            <!-- =================================================
+                 SEARCH AND FILTER SECTION
+                 Allows users to search and filter tasks.
+                 ================================================= -->
+            <section class="filter-section" aria-label="Filter and search section">
+
+                <!-- Search box -->
+                <div class="input-row">
+                    <label for="searchInput" class="input-label">
+                        Search Tasks
+                    </label>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        class="text-input"
+                        placeholder="Type to search by title">
+                </div>
+
+                <!-- Filter controls -->
+                <div class="filter-row">
+
+                    <!-- Status filter -->
+                    <div class="filter-item">
+                        <span class="filter-label">Status:</span>
+                        <button type="button" id="filterAll" class="filter-button">
+                            All
+                        </button>
+                        <button type="button" id="filterPending" class="filter-button">
+                            Pending
+                        </button>
+                        <button type="button" id="filterCompleted" class="filter-button">
+                            Completed
+                        </button>
+                    </div>
+
+                    <!-- Priority filter -->
+                    <div class="filter-item">
+                        <span class="filter-label">Priority:</span>
+                        <button type="button" id="filterPriorityAll" class="filter-button">
+                            All
+                        </button>
+                        <button type="button" id="filterPriorityLow" class="filter-button">
+                            Low
+                        </button>
+                        <button type="button" id="filterPriorityMedium" class="filter-button">
+                            Medium
+                        </button>
+                        <button type="button" id="filterPriorityHigh" class="filter-button">
+                            High
+                        </button>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- =================================================
+                 STATS SECTION
+                 Displays basic statistics about the tasks.
+                 ================================================= -->
+            <section class="stats-section" aria-label="Task summary section">
+
+                <h2 class="section-title">Task Summary</h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <p class="stat-label">Total Tasks</p>
+                        <p class="stat-value" id="totalTasksCount">0</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <p class="stat-label">Pending Tasks</p>
+                        <p class="stat-value" id="pendingTasksCount">0</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <p class="stat-label">Completed Tasks</p>
+                        <p class="stat-value" id="completedTasksCount">0</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <p class="stat-label">High Priority</p>
+                        <p class="stat-value" id="highPriorityCount">0</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- =================================================
+                 TASK LIST SECTION
+                 Displays list of tasks dynamically.
+                 ================================================= -->
+            <section class="tasks-section" aria-label="Task list section">
+
+                <h2 class="section-title">Task List</h2>
+
+                <!-- Container for the list of tasks -->
+                <div class="task-list-container">
+                    <ul id="taskList" class="task-list">
+                        <!-- Tasks will be added here dynamically -->
+                    </ul>
+                </div>
+
+            </section>
+
+            <!-- =================================================
+                 INFORMATION / HELP SECTION
+                 A simple help/instruction area for the user.
+                 ================================================= -->
+            <section class="help-section" aria-label="Help and instructions">
+                <h2 class="section-title">How to Use</h2>
+                <ol class="help-list">
+                    <li>Enter a task title and optional description.</li>
+                    <li>Select a priority, category, and due date.</li>
+                    <li>Click the "Add Task" button to add it to the list.</li>
+                    <li>Use the buttons in each task to complete, edit, or delete.</li>
+                    <li>Use the search box and filters to quickly find tasks.</li>
+                </ol>
+            </section>
+
+        </main>
+
+        <!-- =====================================================
+             FOOTER SECTION
+             Contains basic footer text and attribution.
+             ===================================================== -->
+        <footer class="app-footer">
+            <p class="footer-text">
+                To-Do List Application | Created for academic assignment
+                using HTML, CSS, and JavaScript.
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- =========================================================
+         LINKING EXTERNAL JAVASCRIPT FILE
+         ========================================================= -->
+    <script src="script.js"></script>
+
+</body>
+</html>
+
